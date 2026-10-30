@@ -1,0 +1,24 @@
+# Research documents kept locally
+*.pdf
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Node
+node_modules/
+dist/
+
+# Secrets and environment files
+.env
+.env.*
+!.env.example
+
+# Models and datasets
+models/*.keras
+models/*.h5
+models/*.pt
+models/*.pth
+data/samples/
