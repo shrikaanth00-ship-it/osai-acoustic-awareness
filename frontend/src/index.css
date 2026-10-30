@@ -1,0 +1,176 @@
+:root {
+  --bg-primary: #0a0c10;
+  --bg-secondary: #12161f;
+  --bg-tertiary: #1a202c;
+  --bg-card: rgba(18, 22, 31, 0.85);
+  --bg-card-border: rgba(56, 189, 248, 0.15);
+
+  --text-main: #f1f5f9;
+  --text-muted: #94a3b8;
+  --text-subtle: #64748b;
+
+  --accent-cyan: #00f0ff;
+  --accent-cyan-glow: rgba(0, 240, 255, 0.35);
+  --accent-cyan-dim: rgba(0, 240, 255, 0.12);
+
+  --alert-red: #ff334b;
+  --alert-red-glow: rgba(255, 51, 75, 0.45);
+  --alert-red-dim: rgba(255, 51, 75, 0.15);
+
+  --warn-amber: #f59e0b;
+  --warn-amber-glow: rgba(245, 158, 11, 0.4);
+  --warn-amber-dim: rgba(245, 158, 11, 0.15);
+
+  --safe-emerald: #10b981;
+  --safe-emerald-dim: rgba(16, 185, 129, 0.15);
+
+  --font-hud: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  --border-radius: 12px;
+  --transition-fast: 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-smooth: 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-main);
+  font-family: var(--font-hud);
+  min-height: 100vh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  background-image: 
+    radial-gradient(circle at 50% 0%, rgba(0, 240, 255, 0.05) 0%, transparent 60%),
+    radial-gradient(circle at 100% 100%, rgba(18, 22, 31, 0.8) 0%, transparent 50%);
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+  transition: var(--transition-fast);
+}
+
+button:focus-visible {
+  outline: 2px solid var(--accent-cyan);
+  outline-offset: 2px;
+}
+
+/* Glassmorphism Card Utility */
+.glass-panel {
+  background: var(--bg-card);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--bg-card-border);
+  border-radius: var(--border-radius);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+/* Radar & Pulse Animations */
+@keyframes radar-sweep {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes pulse-active-alert {
+  0%, 100% {
+    box-shadow: 0 0 15px var(--alert-red-glow), inset 0 0 15px var(--alert-red-dim);
+    border-color: var(--alert-red);
+  }
+  50% {
+    box-shadow: 0 0 35px var(--alert-red-glow), inset 0 0 25px var(--alert-red-dim);
+    border-color: #ff6b7e;
+  }
+}
+
+@keyframes pulse-amber-warn {
+  0%, 100% {
+    box-shadow: 0 0 15px var(--warn-amber-glow);
+    border-color: var(--warn-amber);
+  }
+  50% {
+    box-shadow: 0 0 30px var(--warn-amber-glow);
+    border-color: #fbbf24;
+  }
+}
+
+@keyframes soundwave {
+  0% { transform: scale(0.9); opacity: 0.8; }
+  50% { transform: scale(1.15); opacity: 0.3; }
+  100% { transform: scale(1.35); opacity: 0; }
+}
+
+.radar-sector-active {
+  animation: pulse-active-alert 1.2s infinite ease-in-out;
+}
+
+.radar-sector-amber {
+  animation: pulse-amber-warn 1.5s infinite ease-in-out;
+}
+
+/* Badges */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 9999px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.badge-sim {
+  background: rgba(56, 189, 248, 0.15);
+  color: #38bdf8;
+  border: 1px solid rgba(56, 189, 248, 0.3);
+}
+
+.badge-live {
+  background: rgba(16, 185, 129, 0.15);
+  color: #10b981;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.badge-alert {
+  background: var(--alert-red-dim);
+  color: #ff4d64;
+  border: 1px solid rgba(255, 77, 100, 0.4);
+}
+
+.badge-uncertain {
+  background: var(--warn-amber-dim);
+  color: #fbbf24;
+  border: 1px solid rgba(251, 191, 36, 0.4);
+}
+
+.badge-cleared {
+  background: rgba(100, 116, 139, 0.2);
+  color: var(--text-muted);
+  border: 1px solid rgba(100, 116, 139, 0.3);
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--bg-tertiary);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-subtle);
+}
