@@ -1,4 +1,4 @@
-# Research documents kept locally
+# Local reference documents
 *.pdf
 
 # Python
@@ -11,12 +11,12 @@ venv/
 node_modules/
 dist/
 
-# Secrets and environment files
+# Secrets
 .env
 .env.*
 !.env.example
 
-# Models and datasets
+# Model weights and sample data
 models/*.keras
 models/*.h5
 models/*.pt
