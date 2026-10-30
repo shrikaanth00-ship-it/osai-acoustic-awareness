@@ -6,6 +6,7 @@ __pycache__/
 *.py[cod]
 .venv/
 venv/
+.pytest_cache/
 
 # Node
 node_modules/
@@ -16,9 +17,29 @@ dist/
 .env.*
 !.env.example
 
-# Model weights and sample data
+# Model weights and trained artifacts
 models/*.keras
 models/*.h5
 models/*.pt
 models/*.pth
+models/*.onnx
+models/*.tflite
+
+# Audio files and archives (never commit bulky datasets)
+*.wav
+*.mp3
+*.flac
+*.ogg
+*.m4a
+*.zip
+*.tar
+*.tar.gz
+*.gz
+
+# Local machine-learning datasets (never commit)
+HornBase - A Car Horns Dataset/
+HornBase - A Car Horns Dataset*
 data/samples/
+data/datasets/
+data/raw/
+data/processed/
